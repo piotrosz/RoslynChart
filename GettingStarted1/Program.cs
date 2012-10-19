@@ -13,23 +13,7 @@ namespace GettingStarted1
     {
         static void Main()
         {
-            SyntaxTree syntaxTree = SyntaxTree.ParseText(
-            @"using System;
-              using System.Collections;
-              using System.Linq;
-              using System.Text;
- 
-              namespace HelloWorld
-              {
-                class Program
-                {
-                    static void Main(string[] args)
-                    {
-                        Console.WriteLine(""Hello, World!"");
-                    }
-                }
-              }");
-
+            SyntaxTree syntaxTree = SyntaxTree.ParseFile(@"..\..\..\code\test.cs");
             CompilationUnitSyntax root = syntaxTree.GetRoot();
 
             var firstMember = root.Members[0];
