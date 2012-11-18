@@ -13,6 +13,12 @@ namespace Semantics
     {
         static void Main(string[] args)
         {
+            MetadataReference xunitReference = MetadataReference.CreateAssemblyReference("xunit.dll");
+            
+        }
+
+        static void test1()
+        {
             SyntaxTree tree = SyntaxTree.ParseFile(@"..\..\..\code\test.cs");
 
             var compilation = Compilation.Create("HelloWorld")

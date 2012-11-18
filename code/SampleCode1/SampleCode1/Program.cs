@@ -1,19 +1,20 @@
+using Xunit;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SampleCode1
 {
 
     class Program
     {
-	
+        [Fact]
+        public void TestMethod()
+        {
+
+        }
 	
         static void Main(string[] args)
         {
-			
+            const int c = 10;
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Text;
+using Xunit;
  
 namespace HelloWorld
 {
@@ -11,5 +12,11 @@ namespace HelloWorld
         {
             Console.WriteLine("Hello, World!");
         }
+
+        [Fact]
+        public void method()
+        {
+
+        }
     }
 }

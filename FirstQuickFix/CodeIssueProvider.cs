@@ -34,7 +34,6 @@ namespace FirstQuickFix
 
             var localDeclaration = (LocalDeclarationStatementSyntax)node;
 
-
             if (localDeclaration.Modifiers.Any(SyntaxKind.ConstKeyword)) // already is const
             {
                 return null;
@@ -66,9 +65,6 @@ namespace FirstQuickFix
                 {
                     return null;
                 }
-
-
-                
 
                 var constantValue = semanticModel.GetConstantValue(initializer.Value);
                 if (!constantValue.HasValue)

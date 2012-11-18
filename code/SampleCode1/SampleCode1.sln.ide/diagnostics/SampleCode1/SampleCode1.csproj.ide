@@ -1,0 +1,16 @@
+﻿<Project Format="0.0.0.3">
+  <Version>2012-11-17T18:44:27.3515107Z</Version>
+  <Binding>True</Binding>
+  <Diagnostic>
+    <Code>219</Code>
+    <Id>CS0219</Id>
+    <Severity>Warning</Severity>
+    <Message>The variable 'c' is assigned but its value is never used</Message>
+    <MappedFile>I:\prog\RoslynCTP2012\code\SampleCode1\SampleCode1\Program.cs</MappedFile>
+    <MappedLine>16</MappedLine>
+    <MappedColumn>22</MappedColumn>
+    <OriginalFile>I:\prog\RoslynCTP2012\code\SampleCode1\SampleCode1\Program.cs</OriginalFile>
+    <OriginalLine>16</OriginalLine>
+    <OriginalColumn>22</OriginalColumn>
+  </Diagnostic>
+</Project>
