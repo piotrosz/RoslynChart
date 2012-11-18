@@ -7,7 +7,7 @@ namespace SampleCode1
     class Program
     {
         [Fact]
-        public void TestMethod()
+        public void ()
         {
 
         }

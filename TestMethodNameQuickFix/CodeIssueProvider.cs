@@ -20,7 +20,11 @@ namespace TestMethodNameQuickFix
             // TODO: not already camel_case
             if (methodDeclaration.AttributeLists.Any(a => a.Attributes.Any(at => at.Name.ToString() == "Fact")))
             {
-                return new[] { new CodeIssue(CodeIssueKind.Warning, methodDeclaration.Identifier.Span, "Convert to underscore_case") };
+                return new[] { 
+                    new CodeIssue(CodeIssueKind.Warning, methodDeclaration.Identifier.Span, 
+                    "Convert to underscore_case",
+                    new CodeAction(document, methodDeclaration)) 
+                };
             }
 
             return null;

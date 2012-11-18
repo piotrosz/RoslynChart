@@ -1,6 +1,30 @@
 ﻿<Project Format="0.0.0.3">
-  <Version>2012-11-17T18:44:27.3515107Z</Version>
+  <Version>2012-11-18T10:42:24.609147Z</Version>
   <Binding>True</Binding>
+  <Diagnostic>
+    <Code>1519</Code>
+    <Id>CS1519</Id>
+    <Severity>Error</Severity>
+    <Message>Invalid token '(' in class, struct, or interface member declaration</Message>
+    <MappedFile>I:\prog\RoslynCTP2012\code\SampleCode1\SampleCode1\Program.cs</MappedFile>
+    <MappedLine>9</MappedLine>
+    <MappedColumn>20</MappedColumn>
+    <OriginalFile>I:\prog\RoslynCTP2012\code\SampleCode1\SampleCode1\Program.cs</OriginalFile>
+    <OriginalLine>9</OriginalLine>
+    <OriginalColumn>20</OriginalColumn>
+  </Diagnostic>
+  <Diagnostic>
+    <Code>1519</Code>
+    <Id>CS1519</Id>
+    <Severity>Error</Severity>
+    <Message>Invalid token '(' in class, struct, or interface member declaration</Message>
+    <MappedFile>I:\prog\RoslynCTP2012\code\SampleCode1\SampleCode1\Program.cs</MappedFile>
+    <MappedLine>9</MappedLine>
+    <MappedColumn>20</MappedColumn>
+    <OriginalFile>I:\prog\RoslynCTP2012\code\SampleCode1\SampleCode1\Program.cs</OriginalFile>
+    <OriginalLine>9</OriginalLine>
+    <OriginalColumn>20</OriginalColumn>
+  </Diagnostic>
   <Diagnostic>
     <Code>219</Code>
     <Id>CS0219</Id>
