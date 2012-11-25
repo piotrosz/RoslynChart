@@ -17,8 +17,8 @@ namespace TestMethodNameQuickFix
         {
             var methodDeclaration = (MethodDeclarationSyntax)node;
 
-            // TODO: not already camel_case
-            if (methodDeclaration.AttributeLists.Any(a => a.Attributes.Any(at => at.Name.ToString() == "Fact")))
+            if (methodDeclaration.AttributeLists.Any(a => a.Attributes.Any(at => at.Name.ToString() == "Fact")) &&
+                !methodDeclaration.Identifier.ToString().IsUnderscoreCase()) // Not already underscore case
             {
                 return new[] { 
                     new CodeIssue(CodeIssueKind.Warning, methodDeclaration.Identifier.Span, 

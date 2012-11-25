@@ -21,6 +21,11 @@ namespace TestMethodNameQuickFix
 
             return string.Join("_", result.ToArray());
         }
+
+        public static bool IsUnderscoreCase(this string name)
+        {
+            return Regex.IsMatch(name, @"^[a-z0-9_]+$");
+        }
     }
 
 }
