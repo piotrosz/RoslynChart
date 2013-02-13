@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Interactive chart scripting";
+}
+
+
+<img src="@Url.Action("DrawChart", "Chart")" />
+
+@using (Html.BeginForm("DrawChart", "Chart"))
+{ 
+
+<textarea cols="40" rows="20" name="code" id="code">
+Chart CreateChart()
+{
+    Chart chart = new Chart();
+    chart.Width = 150;
+    chart.Height = 150;
+
+    chart.ChartAreas.Add(new ChartArea());
+    chart.Series.Add(new Series());
+
+    chart.Series[0].ChartType = SeriesChartType.Column;
+    chart.Series[0].BackGradientStyle = GradientStyle.HorizontalCenter;
+    chart.Series[0].BackSecondaryColor = System.Drawing.Color.Black;
+
+    var xValues = new int[] { 1, 2, 3, 4 };
+    var yValues = new double[] { 0.3, 0.3, 0.1, 0.7 };
+
+    for (int i = 0; i < xValues.Length; i++)
+    {
+        int x = xValues[i];
+        double y = yValues[i];
+        chart.Series[0].Points.AddXY(x, y);
+    }
+
+    chart.Series[0].ChartType = SeriesChartType.Line;
+
+    return chart;
+}
+</textarea>
+
+<br />
+    
+<button type="submit">Execute</button>
+
+}
