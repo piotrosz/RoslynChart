@@ -2,18 +2,52 @@
     ViewBag.Title = "Interactive chart scripting";
 }
 
+@section header{
+<style type="text/css" media="screen">
+    #code { 
+        position: absolute;
+        top: 40px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 
-<img src="@Url.Action("DrawChart", "Chart")" />
+    #chart {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        bottom: 0;
+        left: 800px;
+    }
+</style>
 
-@using (Html.BeginForm("DrawChart", "Chart"))
-{ 
+<script type="text/javascript">
+    var urlDrawChart = "@Url.Action("CreateChart", "Chart")";
 
-<textarea cols="40" rows="20" name="code" id="code">
+    function fixedEncodeURIComponent (str) {
+        return encodeURIComponent(str).replace(/[!'()]/g, escape).replace(/\*/g, "%2A");
+    }
+
+    $(function () {
+        $("#btn-run").click(function () {
+            $.post(urlDrawChart,
+                "code=" + fixedEncodeURIComponent( editor.getValue() ),
+                function (data) {
+                    $("#img-chart").attr("src", "/Chart/ReturnChart?guid=" + data);
+                });
+        });
+    });
+</script>
+}
+
+<div class="row-fluid">
+    <div class="span5" id="code">
 Chart CreateChart()
 {
     Chart chart = new Chart();
     chart.Width = 150;
     chart.Height = 150;
+    chart.BackColor = Color.Green;
 
     chart.ChartAreas.Add(new ChartArea());
     chart.Series.Add(new Series());
@@ -36,10 +70,17 @@ Chart CreateChart()
 
     return chart;
 }
-</textarea>
+    </div>
+    <div class="span5" id="chart">
+        <img id="img-chart" />
+    </div>
+</div>
 
-<br />
     
-<button type="submit">Execute</button>
+<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 
-}
+<script>
+    var editor = ace.edit("code");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/csharp");
+</script>
