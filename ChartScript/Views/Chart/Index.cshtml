@@ -1,23 +1,25 @@
-﻿@{
-    ViewBag.Title = "Interactive chart scripting";
-}
-
-@section header{
+﻿@section header{
 <style type="text/css" media="screen">
     #code { 
         position: absolute;
         top: 40px;
         right: 0;
-        bottom: 0;
+        bottom: 60px;
         left: 0;
+
+        /*height:100%;*/
+        margin-top: -19px;
+        margin-left: -20px;
     }
 
     #chart {
-        position: absolute;
+        float:right;
+        
+        /*position: absolute;
         top: 40px;
         right: 0;
-        bottom: 0;
-        left: 800px;
+        bottom: 200;
+        left: 800px;*/
     }
 </style>
 
@@ -40,9 +42,10 @@
 </script>
 }
 
-<div class="row-fluid">
-    <div class="span5" id="code">
-Chart CreateChart()
+<div class="row">
+
+    <div class="span9" id="code">
+        Chart CreateChart()
 {
     Chart chart = new Chart();
     chart.Width = 150;
@@ -71,12 +74,14 @@ Chart CreateChart()
     return chart;
 }
     </div>
-    <div class="span5" id="chart">
+
+    <div id="chart">
         <img id="img-chart" />
     </div>
+
 </div>
 
-    
+
 <script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 
 <script>
