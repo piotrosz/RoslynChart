@@ -114,6 +114,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\ChartScriptEngine.cs" />
+    <Compile Include="Models\CodeSample.cs" />
+    <Compile Include="Models\CodeSampleList.cs" />
     <Compile Include="Models\CreateChartResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
