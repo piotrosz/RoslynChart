@@ -25,28 +25,15 @@
 
 <script type="text/javascript">
     var urlDrawChart = "@Url.Action("CreateChart", "Chart")";
-
-    function fixedEncodeURIComponent (str) {
-        return encodeURIComponent(str).replace(/[!'()]/g, escape).replace(/\*/g, "%2A");
-    }
-
-    $(function () {
-        $("#btn-run").click(function () {
-            $.post(urlDrawChart,
-                "code=" + fixedEncodeURIComponent( editor.getValue() ),
-                function (data) {
-                    $("#img-chart").attr("src", "/Chart/ReturnChart?guid=" + data);
-                });
-        });
-    });
 </script>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/chartmodel.js")"></script>
 }
 
 <div class="row">
 
     <div class="span9" id="code">
-        Chart CreateChart()
-{
+
     Chart chart = new Chart();
     chart.Width = 150;
     chart.Height = 150;
@@ -72,7 +59,7 @@
     chart.Series[0].ChartType = SeriesChartType.Line;
 
     return chart;
-}
+
     </div>
 
     <div id="chart">

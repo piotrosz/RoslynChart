@@ -9,6 +9,7 @@ using System.Web.UI.DataVisualization.Charting;
 
 namespace ChartScript.Infrastructure
 {
+    // ScriptEngine wrapper
     public class ChartScriptEngine
     {
         private ScriptEngine engine;

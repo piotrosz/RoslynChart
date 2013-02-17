@@ -19,9 +19,9 @@
 	
 	@RenderSection("header", required: false)
 
-    <!-- CSS -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
+      <!-- CSS -->
+      <link href="../assets/css/bootstrap.css" rel="stylesheet">
+      <style type="text/css">
 
       /* Sticky footer styles
       -------------------------------------------------- */
@@ -72,18 +72,22 @@
         margin: 20px 0;
       }
 
-      code {
-        font-size: 80%;
-      }
-
       #btn-run {
         margin-left: 5px;
+        margin-top: 4px;
       }
 
-    </style>
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+      #code-select {
+          margin-top: 3px;
+          margin-left: 5px;
+      }
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    #messages {
+        height: 100%;
+    }
+    </style>
+
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
     <![endif]-->
@@ -104,7 +108,15 @@
       <!-- Fixed navbar -->
       <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">  
-            <a class="btn btn-success" href="#" id="btn-run"><i class="icon-play"></i> Run</a>    
+            <div>
+                <a class="btn btn-success" href="#" id="btn-run"><i class="icon-play"></i> Run</a>    
+
+                <select id="code-select" class="pull-left">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                </select>
+            </div>
         </div>
       </div>
 
@@ -121,11 +133,9 @@
         <div id="push"></div>
     </div>
 
-      <div id="footer">
-          <div class="container">
-              <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
-          </div>
-      </div>
+    <div id="footer">
+        <div class="alert alert-success" id="messages"></div>
+    </div>
 
       <!-- Le javascript
     ================================================== -->
