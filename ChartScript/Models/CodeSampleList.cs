@@ -5,6 +5,7 @@ using System.Web;
 
 namespace ChartScript.Models
 {
+    [Serializable]
     public class CodeSampleList : List<CodeSample>
     {
     }

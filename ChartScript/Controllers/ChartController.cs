@@ -20,7 +20,7 @@ namespace ChartScript.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateChart(string code)
+        public JsonResult Create(string code)
         {
             var engine = new ChartScriptEngine();
             var session = engine.CreateSession();
