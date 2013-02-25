@@ -16,7 +16,8 @@
 
 	<script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/knockout-2.2.1.js")" type="text/javascript"></script>
-	
+	<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+
 	@RenderSection("header", required: false)
 
       <!-- CSS -->
@@ -109,12 +110,9 @@
       <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">  
             <div>
-                <a class="btn btn-success" href="#" id="btn-run"><i class="icon-play"></i> Run</a>    
+                <a class="btn btn-success" href="#" data-bind="click: getChart" id="btn-run"><i class="icon-play"></i> Run</a>    
 
-                <select id="code-select" class="pull-left">
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
+                <select id="code-select" class="pull-left" data-bind="options: CodeSamples, value: CodeSample, optionsText: 'Name'">
                 </select>
             </div>
         </div>

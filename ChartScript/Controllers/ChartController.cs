@@ -19,6 +19,36 @@ namespace ChartScript.Controllers
             return View();
         }
 
+        [HttpGet]
+        public JsonResult CodeSamples()
+        {
+            var model = new CodeSampleList();
+
+            var codeSample1 = new CodeSample();
+            codeSample1.Name = "Line chart";
+            codeSample1.Code = @"var chart = new Chart();
+    
+    chart.Series.Add(new Series());
+
+    // Fill series data
+	double yValue = 50.0;
+	Random random = new Random();
+	for(int pointIndex = 0; pointIndex < 20000; pointIndex ++)
+	{
+		yValue = yValue + ( random.NextDouble( ) * 10.0 - 5.0 );
+		chart.Series[0].Points.AddY(yValue);
+	}
+
+	// Set fast line chart type
+	chart.Series[0].ChartType = SeriesChartType.FastLine;
+
+    return chart;";
+
+            model.Add(codeSample1);
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public JsonResult Create(string code)
         {

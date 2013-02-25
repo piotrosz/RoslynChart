@@ -196,9 +196,15 @@
     <Content Include="Scripts\bootstrap.d.ts" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chartmodel.min.js.map">
+      <DependentUpon>chartmodel.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <TypeScriptCompile Include="Scripts\chartmodel.ts" />
     <Content Include="Scripts\chartmodel.js">
+      <DependentUpon>chartmodel.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\chartmodel.min.js">
       <DependentUpon>chartmodel.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery-1.9.1.js" />

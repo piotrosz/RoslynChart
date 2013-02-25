@@ -3,32 +3,56 @@
 /// <reference path="jquery.d.ts" />
 /// <reference path="bootstrap.d.ts" />
 
-class CodeSample {
-    constructor(public name: string, public code: string) {
+ko.bindingHandlers["code"] = {
+    init: function (element) {
+        var editor = ace.edit(element);
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/csharp");
+    },
+    update: function (element, valueAccessor) {
+        var currentValue = valueAccessor();
+        
+        $(element).text(currentValue);
+        var editor = ace.edit(element);
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/csharp");
+    }
+};
 
+
+class CodeSample {
+    constructor(public Name: string, public Code: string) {
     }
 }
 
 class RoslynChartViewModel {
 
-    public Samples: KnockoutObservableArray;
-    public Editor: any;
-
+    public CodeSamples: KnockoutObservableArray;
+    public CodeSample: KnockoutObservableAny;
+    
+    public getChart: Function;
 
     constructor() {
-        this.Samples = ko.observableArray([
-            new CodeSample("Line chart", "code 1"),
-            new CodeSample("Bar chart", "code 2")
-        ]);
 
-        this.Editor = ace.edit("code");
-        this.Editor.setTheme("ace/theme/monokai");
-        this.Editor.getSession().setMode("ace/mode/csharp");
-    }
+        var codeSamples;
 
-    getChart() {
-        $.post("Chart/Create",
-            "code=" + fixedEncodeURIComponent(this.Editor.getValue()),
+        $.ajax({
+            url: "Chart/CodeSamples",
+            async: false,
+            dataType: "json",
+            success: function (data) {
+                codeSamples = data;
+            }
+        });
+
+        this.CodeSamples = ko.observableArray(codeSamples);
+
+        this.CodeSample = ko.observable(codeSamples[1]);
+
+        this.getChart = () => {
+
+            $.post("Chart/Create",
+            "code=" + fixedEncodeURIComponent(this.CodeSample().Code),
             function (data) {
                 if (data.Message == "Success") {
                     $("#img-chart").attr("src", "/Chart/ReturnChart?guid=" + data.Guid);
@@ -41,6 +65,7 @@ class RoslynChartViewModel {
                     $("#messages").text(data.Message);
                 }
             });
+        };
     }
 }
 
@@ -52,6 +77,4 @@ function fixedEncodeURIComponent(str) {
 $(function () {
     ko.applyBindings(new RoslynChartViewModel());
 
-    //$("#btn-run").click(function () {  
-    //});
 });

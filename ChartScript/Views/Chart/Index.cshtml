@@ -2,7 +2,7 @@
 <style type="text/css" media="screen">
     #code { 
         position: absolute;
-        top: 40px;
+        top: 62px;
         right: 0;
         bottom: 60px;
         left: 0;
@@ -17,43 +17,17 @@
 
 <script type="text/javascript">
     var urlDrawChart = "@Url.Action("CreateChart", "Chart")";
+
 </script>
 
 <script type="text/javascript" src="@Url.Content("~/Scripts/chartmodel.js")"></script>
 }
 
-<div class="row">
-
-    <div class="span9" id="code">
-
-    Chart chart = new Chart();
-    chart.Width = 150;
-    chart.Height = 150;
-    chart.BackColor = Color.Green;
-
-    chart.ChartAreas.Add(new ChartArea());
-    chart.Series.Add(new Series());
-
-    chart.Series[0].ChartType = SeriesChartType.Column;
-    chart.Series[0].BackGradientStyle = GradientStyle.HorizontalCenter;
-    chart.Series[0].BackSecondaryColor = System.Drawing.Color.Black;
-
-    var xValues = new int[] { 1, 2, 3, 4 };
-    var yValues = new double[] { 0.3, 0.3, 0.1, 0.7 };
-
-    for (int i = 0; i < xValues.Length; i++)
-    {
-        int x = xValues[i];
-        double y = yValues[i];
-        chart.Series[0].Points.AddXY(x, y);
-    }
-
-    chart.Series[0].ChartType = SeriesChartType.Line;
-
-    return chart;
-
+<div class="row" data-bind="with: CodeSample">
+    <div class="span9" id="code" data-bind="code: Code">
     </div>
 
+    
     <div id="chart">
         <img id="img-chart" />
     </div>
@@ -61,4 +35,3 @@
 </div>
 
 
-<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
