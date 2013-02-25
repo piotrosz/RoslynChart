@@ -1,15 +1,15 @@
+var editor;
 ko.bindingHandlers["code"] = {
     init: function (element) {
-        var editor = ace.edit(element);
+        editor = ace.edit("code");
         editor.setTheme("ace/theme/monokai");
         editor.getSession().setMode("ace/mode/csharp");
     },
     update: function (element, valueAccessor) {
         var currentValue = valueAccessor();
-        $(element).text(currentValue);
-        var editor = ace.edit(element);
-        editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode("ace/mode/csharp");
+        debugger;
+
+        editor.setValue(currentValue);
     }
 };
 var CodeSample = (function () {
