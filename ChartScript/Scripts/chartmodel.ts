@@ -13,7 +13,6 @@ ko.bindingHandlers["code"] = {
     },
     update: function (element, valueAccessor) {
         var currentValue = valueAccessor();
-        debugger;
         editor.setValue(currentValue);
     }
 };
