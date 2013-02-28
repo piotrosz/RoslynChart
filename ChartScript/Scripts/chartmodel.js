@@ -8,6 +8,7 @@ ko.bindingHandlers["code"] = {
     update: function (element, valueAccessor) {
         var currentValue = valueAccessor();
         editor.setValue(currentValue);
+        editor.getSession().getSelection().clearSelection();
     }
 };
 var CodeSample = (function () {
@@ -19,7 +20,6 @@ var CodeSample = (function () {
 })();
 var RoslynChartViewModel = (function () {
     function RoslynChartViewModel() {
-        var _this = this;
         var codeSamples;
         $.ajax({
             url: "Chart/CodeSamples",
@@ -32,7 +32,7 @@ var RoslynChartViewModel = (function () {
         this.CodeSamples = ko.observableArray(codeSamples);
         this.CodeSample = ko.observable(codeSamples[1]);
         this.getChart = function () {
-            $.post("Chart/Create", "code=" + fixedEncodeURIComponent(_this.CodeSample().Code), function (data) {
+            $.post("Chart/Create", "code=" + fixedEncodeURIComponent(editor.getSession().getValue()), function (data) {
                 if(data.Message == "Success") {
                     $("#img-chart").attr("src", "/Chart/ReturnChart?guid=" + data.Guid);
                     $("#messages").removeClass("alert alert-error").addClass("alert alert-success");
@@ -50,5 +50,7 @@ function fixedEncodeURIComponent(str) {
     return encodeURIComponent(str);
 }
 $(function () {
-    ko.applyBindings(new RoslynChartViewModel());
+    var viewModel = new RoslynChartViewModel();
+    ko.applyBindings(viewModel);
+    viewModel.getChart();
 });

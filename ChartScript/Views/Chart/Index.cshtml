@@ -3,7 +3,6 @@
     #code { 
         position: absolute;
         top: 62px;
-        right: 0;
         bottom: 60px;
         left: 0;
         margin-top: -19px;
@@ -11,7 +10,12 @@
     }
 
     #chart {
-        float:right;
+        position:absolute;
+        top: 62px;
+        right: 0px;
+        left: auto;
+
+
     }
 </style>
 
@@ -27,7 +31,6 @@
     <div class="span9" id="code" data-bind="code: Code">
     </div>
 
-    
     <div id="chart">
         <img id="img-chart" />
     </div>

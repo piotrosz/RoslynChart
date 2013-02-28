@@ -14,6 +14,7 @@ ko.bindingHandlers["code"] = {
     update: function (element, valueAccessor) {
         var currentValue = valueAccessor();
         editor.setValue(currentValue);
+        editor.getSession().getSelection().clearSelection();
     }
 };
 
@@ -49,7 +50,7 @@ class RoslynChartViewModel {
         this.getChart = () => {
 
             $.post("Chart/Create",
-            "code=" + fixedEncodeURIComponent(this.CodeSample().Code),
+            "code=" + fixedEncodeURIComponent(editor.getSession().getValue()),
             function (data) {
                 if (data.Message == "Success") {
                     $("#img-chart").attr("src", "/Chart/ReturnChart?guid=" + data.Guid);
@@ -72,5 +73,7 @@ function fixedEncodeURIComponent(str) {
 }
 
 $(function () {
-    ko.applyBindings(new RoslynChartViewModel());
+    var viewModel = new RoslynChartViewModel();
+    ko.applyBindings(viewModel);
+    viewModel.getChart();
 });
