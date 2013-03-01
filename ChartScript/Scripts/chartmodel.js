@@ -11,13 +11,6 @@ ko.bindingHandlers["code"] = {
         editor.getSession().getSelection().clearSelection();
     }
 };
-var CodeSample = (function () {
-    function CodeSample(Name, Code) {
-        this.Name = Name;
-        this.Code = Code;
-    }
-    return CodeSample;
-})();
 var RoslynChartViewModel = (function () {
     function RoslynChartViewModel() {
         var codeSamples;
@@ -29,9 +22,14 @@ var RoslynChartViewModel = (function () {
                 codeSamples = data;
             }
         });
-        this.CodeSamples = ko.observableArray(codeSamples);
-        this.CodeSample = ko.observable(codeSamples[1]);
+        this.CodeSamples = ko.observable(codeSamples);
+        this.Section1 = ko.observable(codeSamples[0]);
+        this.Section2 = ko.observable(codeSamples[0].Sections[0]);
+        this.CodeSample = ko.observable(codeSamples[0].Sections[0].CodeSamples[0]);
         this.getChart = function () {
+            if(editor == undefined) {
+                return;
+            }
             $.post("Chart/Create", "code=" + fixedEncodeURIComponent(editor.getSession().getValue()), function (data) {
                 if(data.Message == "Success") {
                     $("#img-chart").attr("src", "/Chart/ReturnChart?guid=" + data.Guid);

@@ -18,14 +18,11 @@ ko.bindingHandlers["code"] = {
     }
 };
 
-class CodeSample {
-    constructor(public Name: string, public Code: string) {
-    }
-}
-
 class RoslynChartViewModel {
 
-    public CodeSamples: KnockoutObservableArray;
+    public CodeSamples: KnockoutObservableAny;
+    public Section1: KnockoutObservableAny;
+    public Section2: KnockoutObservableAny;
     public CodeSample: KnockoutObservableAny;
     
     public getChart: Function;
@@ -43,11 +40,17 @@ class RoslynChartViewModel {
             }
         });
 
-        this.CodeSamples = ko.observableArray(codeSamples);
+        this.CodeSamples = ko.observable(codeSamples);
 
-        this.CodeSample = ko.observable(codeSamples[1]);
+        this.Section1 = ko.observable(codeSamples[0]);
+        this.Section2 = ko.observable(codeSamples[0].Sections[0]);
+        this.CodeSample = ko.observable(codeSamples[0].Sections[0].CodeSamples[0]);
 
         this.getChart = () => {
+
+            if (editor == undefined) {
+                return;
+            }
 
             $.post("Chart/Create",
             "code=" + fixedEncodeURIComponent(editor.getSession().getValue()),

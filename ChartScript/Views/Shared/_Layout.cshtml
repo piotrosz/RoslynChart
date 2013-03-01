@@ -78,7 +78,7 @@
         margin-top: 4px;
       }
 
-      #code-select {
+      .code-select {
           margin-top: 3px;
           margin-left: 5px;
       }
@@ -112,19 +112,24 @@
             <div>
                 <a class="btn btn-success" href="#" data-bind="click: getChart" id="btn-run"><i class="icon-play"></i> Run</a>    
 
-                <select id="code-select" class="pull-left" data-bind="options: CodeSamples, value: CodeSample, optionsText: 'Name'">
+                <select class="pull-left code-select" data-bind="options: CodeSamples, value: Section1, optionsText: 'Name'">
                 </select>
+
+                <span data-bind="with: Section1">
+                    <select class="pull-left code-select" data-bind="options: Sections, value: $root.Section2, optionsText: 'Name'">
+                    </select>
+                </span>
+
+                <span data-bind="with: Section2">
+                    <select class="pull-left code-select" data-bind="options: CodeSamples, value: $root.CodeSample, optionsText: 'Name'">
+                    </select>
+                </span>
             </div>
         </div>
       </div>
 
         <!-- Begin page content -->
         <div class="container">
-            @*<div class="page-header">
-                <h1>Sticky footer with fixed navbar</h1>
-            </div>
-            <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
-            <p>Back to <a href="./sticky-footer.html">the sticky footer</a> minus the navbar.</p>*@
             @RenderBody()
         </div>
 

@@ -115,11 +115,12 @@
     </Compile>
     <Compile Include="Infrastructure\ChartScriptEngine.cs" />
     <Compile Include="Models\CodeSample.cs" />
-    <Compile Include="Models\CodeSampleList.cs" />
+    <Compile Include="Models\CodeSampleSections.cs" />
     <Compile Include="Models\CodeSamplesImporter.cs" />
     <Compile Include="Models\CreateChartResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleCode\LineChartSample.cs" />
+    <Compile Include="SampleCode\Chart types\Line charts\LineCurves.cs" />
+    <Compile Include="SampleCode\Chart types\Line charts\LineChart1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -232,6 +233,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="SampleCode\Chart types\Area charts\" />
+    <Folder Include="SampleCode\Chart types\Bar and column charts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

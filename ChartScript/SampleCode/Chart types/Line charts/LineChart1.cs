@@ -9,9 +9,9 @@ namespace ChartScript.SampleCode
 {
     public class LineChartSample
     {
-        public Chart CreateChart()
+        public Chart GetChart()
         {
-// Sample begin [Line chart]
+// [Line chart]
 Chart chart = new Chart();
 chart.Palette = ChartColorPalette.EarthTones;
 
@@ -65,7 +65,7 @@ chart.Legends[0].Alignment = StringAlignment.Center;
 chart.Legends[0].LegendStyle = LegendStyle.Table;
 
 return chart;
-// Sample end
+// End
         }
     }
 }

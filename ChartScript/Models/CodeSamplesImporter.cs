@@ -9,32 +9,43 @@ namespace ChartScript.Models
 {
     public class CodeSamplesImporter
     {
-        private CodeSampleList samples;
+        public List<CodeSampleSection1> codeSamples;
 
         public CodeSamplesImporter()
         {
-            samples = new CodeSampleList();
+            codeSamples = new List<CodeSampleSection1>();
         }
 
-        public CodeSampleList Import()
+        public List<CodeSampleSection1> Import()
         {
-            foreach (string file in Directory.GetFiles(HttpContext.Current.Request.MapPath("~/SampleCode"), "*.cs"))
+            string rootDir = HttpContext.Current.Request.MapPath("~/SampleCode");
+
+            foreach(string section1Dir in Directory.GetDirectories(rootDir))
             {
-                string fileContent = File.ReadAllText(file);
+                codeSamples.Add(new CodeSampleSection1(Path.GetFileName(section1Dir)));
 
-                Match match = Regex.Match(fileContent, @"// Sample begin \[([\w\s]{1,})\]([^**]{0,})// Sample end");
-
-                if (match.Success)
+                foreach(string section2Dir in Directory.GetDirectories(section1Dir))
                 {
-                    samples.Add(new CodeSample
+                    codeSamples.Last().Sections.Add(new CodeSampleSection2(Path.GetFileName(section2Dir)));
+
+                    foreach (string file in Directory.GetFiles(section2Dir, "*.cs", SearchOption.AllDirectories))
                     {
-                        Name = match.Groups[1].ToString(),
-                        Code = match.Groups[2].ToString()
-                    });
+                        string fileContent = File.ReadAllText(file);
+                        Match match = Regex.Match(fileContent, @"// \[([\w\s]{1,})\]([^**]{0,})// End");
+
+                        if (match.Success)
+                        {
+                            codeSamples.Last().Sections.Last().CodeSamples.Add(new CodeSample
+                            {
+                                Name = match.Groups[1].ToString(),
+                                Code = match.Groups[2].ToString()
+                            });
+                        }
+                    }
                 }
             }
 
-            return samples;
+            return codeSamples;
         }
     }
 }
