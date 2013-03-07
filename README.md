@@ -1,4 +1,3 @@
-RoslynCTP
+Roslyn chart
 =========
 
-Roslyn CTP experiments
