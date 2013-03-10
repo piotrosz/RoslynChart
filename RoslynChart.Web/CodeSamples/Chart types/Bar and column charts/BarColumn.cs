@@ -12,7 +12,7 @@ namespace RoslynChart.SampleCode.Chart_types.Bar_and_column_charts
     {
         public Chart GetChart()
         {
-// [Bar1]
+// Bar
 Chart chart = new Chart();
 chart.Width = 500;
 chart.Height = 500;
@@ -116,7 +116,6 @@ chart.ChartAreas[0].Area3DStyle.Enable3D = true;
 chart.Series[0]["DrawingStyle"] = "Cylinder";
 
 return chart;
-// End
         }
     }
 }

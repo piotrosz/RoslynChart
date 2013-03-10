@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RoslynChart.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Web.UI.DataVisualization.Charting;
 
 namespace RoslynChart.SampleCode
 {
-    public class LineChartSample
+    public class LineChart : IChartExample
     {
         public Chart GetChart()
         {
-// [Line chart]
+// Line chart
 Chart chart = new Chart();
 chart.Palette = ChartColorPalette.EarthTones;
 
@@ -65,7 +66,6 @@ chart.Legends[0].Alignment = StringAlignment.Center;
 chart.Legends[0].LegendStyle = LegendStyle.Table;
 
 return chart;
-// End
         }
     }
 }

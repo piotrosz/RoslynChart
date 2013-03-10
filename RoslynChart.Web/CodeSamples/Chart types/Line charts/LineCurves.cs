@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RoslynChart.Models;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Web.UI.DataVisualization.Charting;
 
 namespace RoslynChart.SampleCode
 {
-    class LineCurvesSample
+    public class LineCurvesSample : IChartExample
     {
-        private Chart GetChart()
+        public Chart GetChart()
         {
-// [Line curves]
+// Line curves
 Chart chart = new Chart();
 chart.Palette = ChartColorPalette.BrightPastel;
 chart.BackColor = ColorTranslator.FromHtml("#F3DFC1");
@@ -116,7 +117,6 @@ chart.Series["Series1"]["ShowMarkerLines"] = "True";
 chart.Series["Series2"]["ShowMarkerLines"] = "True";
 
 return chart;
-// End
         }
     }
 }

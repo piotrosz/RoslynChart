@@ -12,7 +12,7 @@ namespace RoslynChart.SampleCode.Chart_types.Bar_and_column_charts
     {
         public Chart GetChart()
         {
-// [Stacked]
+// Stacked
 Chart chart = new Chart();
 chart.Height = 296;
 chart.Width = 412;
@@ -125,7 +125,6 @@ chart.Series[2]["StackedGroupName"] = "Group2";
 chart.Series[3]["StackedGroupName"] = "Group2";
 
 return chart;
-// End
         }
     }
 }

@@ -43,7 +43,7 @@ namespace RoslynChart.Core
 
         public Chart CreateChart(string code)
         {
-            code = "Chart CreateChart() { " + code + "}";
+            code = "Chart CreateChart() { Chart chart = new Chart(); " + code + " return chart; }";
             session = engine.CreateSession();
             session.Execute(code);
             return (Chart) session.Execute("CreateChart()");

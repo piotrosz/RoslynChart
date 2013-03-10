@@ -118,7 +118,7 @@
     <Compile Include="CodeSamples\Chart types\Bar and column charts\SimpleColumn.cs" />
     <Compile Include="CodeSamples\Chart types\Bar and column charts\Stacked.cs" />
     <Compile Include="CodeSamples\Chart types\Line charts\LineCurves.cs" />
-    <Compile Include="CodeSamples\Chart types\Line charts\LineChart1.cs" />
+    <Compile Include="CodeSamples\Chart types\Line charts\LineChart.cs" />
     <Compile Include="CodeSamples\Chart types\Pie and doughnut charts\SimplePie.cs" />
   </ItemGroup>
   <ItemGroup>

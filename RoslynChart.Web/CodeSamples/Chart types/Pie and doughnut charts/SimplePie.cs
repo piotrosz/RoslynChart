@@ -12,7 +12,7 @@ namespace RoslynChart.SampleCode.Chart_types.Pie_and_doughnut_charts
     {
         public Chart GetChart()
         {
-// [Simple pie]
+// Simple pie
 Chart chart = new Chart();
 
 var yValues = new double[] { 0.3, 0.2, 0.5 };
@@ -41,7 +41,6 @@ foreach (double y in yValues)
 }
 
 return chart;
-// End
         }
     }
 }

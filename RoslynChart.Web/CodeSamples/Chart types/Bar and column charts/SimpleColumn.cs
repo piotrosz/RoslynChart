@@ -12,11 +12,11 @@ namespace RoslynChart.SampleCode.Chart_types.Bar_and_column_charts
     {
         public Chart GetChart()
         {
-// [Simple column]
-var values = new double[] { 9, 30, 5 };
-var labels = new string[] { "A", "B", "C" };
-
+// Simple column
 Chart chart = new Chart();
+var values = new double[] { 9, 30, 5, 80, 9, 45 };
+var labels = new string[] { "A", "B", "C", "d", "e", "F" };
+
 chart.ChartAreas.Add(new ChartArea());
 chart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
 chart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
@@ -27,7 +27,7 @@ chart.ChartAreas[0].AxisX.LineWidth = 0;
 chart.ChartAreas[0].AxisY.Enabled = AxisEnabled.False;
 
 chart.Height = 500;
-chart.Width = 500;
+chart.Width = 700;
 
 chart.Series.Add(new Series());
 chart.Series[0].ChartType = SeriesChartType.Column;
@@ -41,7 +41,6 @@ for (int i = 0; i < values.Length; i++)
 }
 
 return chart;
-// End
         }
     }
 }

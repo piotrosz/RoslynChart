@@ -32,7 +32,7 @@ namespace RoslynChart.Core
                     foreach (string file in Directory.GetFiles(section2Dir, "*.cs", SearchOption.AllDirectories))
                     {
                         string fileContent = File.ReadAllText(file);
-                        Match match = Regex.Match(fileContent, @"// \[([\w\s]{1,})\]([^**]{0,})// End");
+                        Match match = Regex.Match(fileContent, @"public Chart GetChart\(\)[\n\r\t\s]{1,}\{[\n\r\t\s/]{1,}([/\w\s0-9\-]{1,})[\r\n\t\s]{1,}Chart chart = new Chart\(\);([^**]{0,})return chart;");
 
                         if (match.Success)
                         {
