@@ -7,12 +7,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.DataVisualization.Charting;
 
-namespace ChartScript.Infrastructure
+namespace RoslynChart.Core
 {
-    // ScriptEngine wrapper
     public class ChartScriptEngine
     {
         private ScriptEngine engine;
+        private Session session;
 
         public ChartScriptEngine()
         {
@@ -41,9 +41,12 @@ namespace ChartScript.Infrastructure
                 }.ToList().ForEach(ns => engine.ImportNamespace(ns));
         }
 
-        public Session CreateSession()
+        public Chart CreateChart(string code)
         {
-            return engine.CreateSession();
+            code = "Chart CreateChart() { " + code + "}";
+            session = engine.CreateSession();
+            session.Execute(code);
+            return (Chart) session.Execute("CreateChart()");
         }
     }
 }

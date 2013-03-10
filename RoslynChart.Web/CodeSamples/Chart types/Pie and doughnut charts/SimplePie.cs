@@ -1,4 +1,4 @@
-﻿using ChartScript.Models;
+﻿using RoslynChart.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.DataVisualization.Charting;
 
-namespace ChartScript.SampleCode.Chart_types.Pie_and_doughnut_charts
+namespace RoslynChart.SampleCode.Chart_types.Pie_and_doughnut_charts
 {
     public class SimplePie : IChartExample
     {

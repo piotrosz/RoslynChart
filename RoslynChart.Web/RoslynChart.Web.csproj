@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChartScript</RootNamespace>
+    <RootNamespace>RoslynChart</RootNamespace>
     <AssemblyName>ChartScript</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
@@ -113,19 +113,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\ChartScriptEngine.cs" />
-    <Compile Include="Models\CodeSample.cs" />
-    <Compile Include="Models\CodeSampleSections.cs" />
-    <Compile Include="Models\CodeSamplesImporter.cs" />
-    <Compile Include="Models\CreateChartResult.cs" />
-    <Compile Include="Models\IChartExample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleCode\Chart types\Bar and column charts\BarColumn.cs" />
-    <Compile Include="SampleCode\Chart types\Bar and column charts\SimpleColumn.cs" />
-    <Compile Include="SampleCode\Chart types\Bar and column charts\Stacked.cs" />
-    <Compile Include="SampleCode\Chart types\Line charts\LineCurves.cs" />
-    <Compile Include="SampleCode\Chart types\Line charts\LineChart1.cs" />
-    <Compile Include="SampleCode\Chart types\Pie and doughnut charts\SimplePie.cs" />
+    <Compile Include="CodeSamples\Chart types\Bar and column charts\BarColumn.cs" />
+    <Compile Include="CodeSamples\Chart types\Bar and column charts\SimpleColumn.cs" />
+    <Compile Include="CodeSamples\Chart types\Bar and column charts\Stacked.cs" />
+    <Compile Include="CodeSamples\Chart types\Line charts\LineCurves.cs" />
+    <Compile Include="CodeSamples\Chart types\Line charts\LineChart1.cs" />
+    <Compile Include="CodeSamples\Chart types\Pie and doughnut charts\SimplePie.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -252,6 +246,10 @@
     <ProjectReference Include="..\RoslynChart.Core\RoslynChart.Core.csproj">
       <Project>{66fea4d1-5639-4d62-ac4b-5d0306a431f6}</Project>
       <Name>RoslynChart.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoslynChart.Models\RoslynChart.Models.csproj">
+      <Project>{f43402ba-8d9f-4265-a057-66c9a716fed9}</Project>
+      <Name>RoslynChart.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

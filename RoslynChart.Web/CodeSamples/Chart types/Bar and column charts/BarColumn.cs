@@ -1,4 +1,4 @@
-﻿using ChartScript.Models;
+﻿using RoslynChart.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.DataVisualization.Charting;
 
-namespace ChartScript.SampleCode.Chart_types.Bar_and_column_charts
+namespace RoslynChart.SampleCode.Chart_types.Bar_and_column_charts
 {
     public class BarColumn : IChartExample
     {

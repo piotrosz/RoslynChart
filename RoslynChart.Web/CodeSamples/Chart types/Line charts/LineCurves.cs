@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.DataVisualization.Charting;
 
-namespace ChartScript.SampleCode
+namespace RoslynChart.SampleCode
 {
     class LineCurvesSample
     {

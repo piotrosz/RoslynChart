@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.DataVisualization.Charting;
 
-namespace ChartScript.Models
+namespace RoslynChart.Models
 {
     public interface IChartExample
     {

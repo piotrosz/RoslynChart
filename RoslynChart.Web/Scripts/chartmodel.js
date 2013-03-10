@@ -15,7 +15,7 @@ var RoslynChartViewModel = (function () {
     function RoslynChartViewModel() {
         var codeSamples;
         $.ajax({
-            url: "Chart/CodeSamples",
+            url: "Chart/GetCodeSamples",
             async: false,
             dataType: "json",
             success: function (data) {

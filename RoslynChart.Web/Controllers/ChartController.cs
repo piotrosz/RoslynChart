@@ -7,10 +7,10 @@ using System.Web.UI.DataVisualization.Charting;
 using System.IO;
 using System.Drawing;
 using Roslyn.Scripting.CSharp;
-using ChartScript.Infrastructure;
-using ChartScript.Models;
+using RoslynChart.Models;
+using RoslynChart.Core;
 
-namespace ChartScript.Controllers
+namespace RoslynChart.Controllers
 {
     public class ChartController : Controller
     {
@@ -20,10 +20,15 @@ namespace ChartScript.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Gets code samples from disk.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public JsonResult CodeSamples()
+        public JsonResult GetCodeSamples()
         {
-            var importer = new CodeSamplesImporter();
+            string rootDir = HttpContext.Request.MapPath("~/CodeSamples");
+            var importer = new CodeSamplesImporter(rootDir);
 
             var model = importer.Import();
 
@@ -34,17 +39,13 @@ namespace ChartScript.Controllers
         public JsonResult Create(string code)
         {
             var engine = new ChartScriptEngine();
-            var session = engine.CreateSession();
             var result = new CreateChartResult();
-
             string guid = Guid.NewGuid().ToString();
+
             try
             {
-                code = "Chart CreateChart() { " + code + "}";
-                session.Execute(code);
-                var resultingChart = (Chart)session.Execute("CreateChart()");
-
-                Session[guid] = ReturnChart(resultingChart);
+                var chart = engine.CreateChart(code);
+                Session[guid] = ReturnChart(chart);
             }
             catch (Exception ex)
             {
