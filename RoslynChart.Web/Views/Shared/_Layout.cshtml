@@ -11,22 +11,17 @@
 	<link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" media="screen">
 	<link href="@Url.Content("/~Content/bootstrap-responsive.css")" rel="stylesheet">
 
-	<script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
-	<script src="@Url.Content("~/Scripts/jquery-ui-1.10.0.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/lib/jquery-1.9.1.min.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/lib/jquery-ui-1.10.0.min.js")" type="text/javascript"></script>
 
-	<script src="@Url.Content("~/Scripts/modernizr-2.6.2.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/knockout-2.2.1.js")" type="text/javascript"></script>
+	<script src="@Url.Content("~/Scripts/lib/modernizr-2.6.2.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/lib/knockout-2.2.1.js")" type="text/javascript"></script>
 	<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 
 	@RenderSection("header", required: false)
 
-      <!-- CSS -->
-      <link href="../assets/css/bootstrap.css" rel="stylesheet">
-      <style type="text/css">
-
-      /* Sticky footer styles
-      -------------------------------------------------- */
-
+    <style type="text/css">
+      /* Sticky footer styles */
       html,
       body {
         height: 100%;
@@ -43,13 +38,17 @@
       }
 
       /* Set the fixed height of the footer here */
-      #push,
-      #footer {
+      #footer, #push {
         height: 60px;
       }
       #footer {
         background-color: #f5f5f5;
+        
       }
+
+        .alert {
+            z-index: 20000;
+        }
 
       /* Lastly, apply responsive CSS fixes as necessary */
       @@media (max-width: 767px) {
@@ -82,16 +81,7 @@
           margin-top: 3px;
           margin-left: 5px;
       }
-
-    #messages {
-        height: 100%;
-    }
     </style>
-
-      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
 
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
@@ -102,12 +92,9 @@
   </head>
 
   <body>
-
-    <!-- Part 1: Wrap all page content here -->
     <div id="wrap">
 
-      <!-- Fixed navbar -->
-      <div class="navbar navbar-fixed-top">
+        <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">  
             <div>
                 <a class="btn btn-success" href="#" data-bind="click: getChart" id="btn-run"><i class="icon-play"></i> Run</a>    
@@ -126,23 +113,22 @@
                 </span>
             </div>
         </div>
-      </div>
+        </div>
 
-        <!-- Begin page content -->
         <div class="container">
             @RenderBody()
         </div>
 
         <div id="push"></div>
+    
     </div>
 
     <div id="footer">
         <div class="alert alert-success" id="messages"></div>
     </div>
 
-      <!-- Le javascript
-    ================================================== -->
+      <!-- Le javascript -->
       <!-- Placed at the end of the document so the pages load faster -->
-      <script src="@Url.Content("~/Scripts/bootstrap.min.js")" type="text/javascript"></script>
+      <script src="@Url.Content("~/Scripts/lib/bootstrap.min.js")" type="text/javascript"></script>
   </body>
 </html>

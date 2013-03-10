@@ -194,12 +194,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\lib\bootstrap.js" />
+    <Content Include="Scripts\lib\bootstrap.min.js" />
     <Content Include="Scripts\chartmodel.min.js.map">
       <DependentUpon>chartmodel.js</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <None Include="Scripts\lib\jquery-1.9.1.intellisense.js" />
     <TypeScriptCompile Include="Scripts\chartmodel.ts" />
     <Content Include="Scripts\chartmodel.js">
       <DependentUpon>chartmodel.ts</DependentUpon>
@@ -207,13 +207,13 @@
     <Content Include="Scripts\chartmodel.min.js">
       <DependentUpon>chartmodel.ts</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\jquery-ui-1.10.0.js" />
-    <Content Include="Scripts\jquery-ui-1.10.0.min.js" />
-    <Content Include="Scripts\knockout-2.2.1.debug.js" />
-    <Content Include="Scripts\knockout-2.2.1.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\lib\jquery-1.9.1.js" />
+    <Content Include="Scripts\lib\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\lib\jquery-ui-1.10.0.js" />
+    <Content Include="Scripts\lib\jquery-ui-1.10.0.min.js" />
+    <Content Include="Scripts\lib\knockout-2.2.1.debug.js" />
+    <Content Include="Scripts\lib\knockout-2.2.1.js" />
+    <Content Include="Scripts\lib\modernizr-2.6.2.js" />
     <Content Include="Scripts\typings\ace\ace.d.ts" />
     <Content Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <Content Include="Scripts\typings\jqueryui\jqueryui.d.ts" />
@@ -228,7 +228,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Scripts\lib\jquery-1.9.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>

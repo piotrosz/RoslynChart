@@ -5,7 +5,6 @@ ko.bindingHandlers["code"] = {
         editor = ace.edit("code");
         editor.setTheme("ace/theme/monokai");
         editor.getSession().setMode("ace/mode/csharp");
-        viewModel.getChart();
     },
     update: function (element, valueAccessor) {
         var currentValue = valueAccessor();
