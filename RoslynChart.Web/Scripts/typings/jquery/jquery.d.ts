@@ -59,7 +59,7 @@ interface JQueryAjaxSettings {
 */
 interface JQueryXHR extends XMLHttpRequest, JQueryPromise {
     overrideMimeType(mimeType: string);
-    abort(statusText: string): void;
+    abort(statusText?: string): void;
 }
 
 /*
@@ -156,7 +156,12 @@ interface JQueryKeyEventObject extends JQueryInputEventObject
     keyCode: number;
 }
 
-interface JQueryEventObject extends BaseJQueryEventObject, JQueryInputEventObject, JQueryMouseEventObject, JQueryKeyEventObject {
+interface JQueryPopStateEventObject extends BaseJQueryEventObject
+{
+    originalEvent: PopStateEvent;
+}
+
+interface JQueryEventObject extends BaseJQueryEventObject, JQueryInputEventObject, JQueryMouseEventObject, JQueryKeyEventObject, JQueryPopStateEventObject {
 }
 
 /*
@@ -274,7 +279,10 @@ interface JQueryStatic {
     *******/
     proxy(fn : (...args: any[]) => any, context: any, ...args: any[]): any;
     proxy(context: any, name: string, ...args: any[]): any;
-    Deferred(fn? : (d: JQueryDeferred) => any): JQueryDeferred;
+    Deferred: {
+        (fn?: (d: JQueryDeferred) => any): JQueryDeferred;
+        new(fn?: (d: JQueryDeferred) => any): JQueryDeferred;
+    };
     Event(name:string, eventProperties?:any): JQueryEventObject;
 
     /*********
@@ -300,6 +308,7 @@ interface JQueryStatic {
     contains(container: Element, contained: Element): bool;
 
     each(collection: any, callback: (indexInArray: any, valueOfElement: any) => any): any;
+    each(collection: any[], callback: (indexInArray: any, valueOfElement: any) => any): any;
     each(collection: JQuery, callback: (indexInArray: number, valueOfElement: HTMLElement) => any): any;
     each(collection: string[], callback: (indexInArray: number, valueOfElement: string) => any): any;
     each(collection: number[], callback: (indexInArray: number, valueOfElement: number) => any): any;
@@ -371,6 +380,10 @@ interface JQuery {
     addClass(classNames: string): JQuery;
     addClass(func: (index: any, currentClass: any) => string): JQuery;
 
+    // http://api.jquery.com/addBack/
+    addBack(selector?: string): JQuery;
+
+
     attr(attributeName: string): string;
     attr(attributeName: string, value: any): JQuery;
     attr(map: { [key: string]: any; }): JQuery;
@@ -382,7 +395,7 @@ interface JQuery {
     html(htmlString: string): JQuery;
     html(htmlContent: (index: number, oldhtml: string) => string): JQuery;
 
-    prop(propertyName: string): string;
+    prop(propertyName: string): any;
     prop(propertyName: string, value: any): JQuery;
     prop(map: any): JQuery;
     prop(propertyName: string, func: (index: any, oldPropertyValue: any) => any): JQuery;

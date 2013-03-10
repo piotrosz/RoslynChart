@@ -112,15 +112,15 @@
             <div>
                 <a class="btn btn-success" href="#" data-bind="click: getChart" id="btn-run"><i class="icon-play"></i> Run</a>    
 
-                <select class="pull-left code-select" data-bind="options: CodeSamples, value: Section1, optionsText: 'Name'">
+                <select class="pull-left code-select" data-bind="options: CodeSamples, value: Section, optionsText: 'Name'">
                 </select>
 
-                <span data-bind="with: Section1">
-                    <select class="pull-left code-select" data-bind="options: Sections, value: $root.Section2, optionsText: 'Name'">
+                <span data-bind="with: Section">
+                    <select class="pull-left code-select" data-bind="options: Sections, value: $root.SubSection, optionsText: 'Name'">
                     </select>
                 </span>
 
-                <span data-bind="with: Section2">
+                <span data-bind="with: SubSection">
                     <select class="pull-left code-select" data-bind="options: CodeSamples, value: $root.CodeSample, optionsText: 'Name'">
                     </select>
                 </span>

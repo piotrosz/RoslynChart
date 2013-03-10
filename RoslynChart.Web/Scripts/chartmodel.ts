@@ -1,28 +1,33 @@
-/// <reference path="ace.d.ts" />
-/// <reference path="knockout.d.ts" />
-/// <reference path="jquery.d.ts" />
-/// <reference path="bootstrap.d.ts" />
+/// <reference path="typings/ace/ace.d.ts" />
+/// <reference path="typings/knockout/knockout.d.ts" />
+/// <reference path="typings/jquery/jquery.d.ts" />
+/// <reference path="typings/bootstrap/bootstrap.d.ts" />
 
 var editor;
+var viewModel: RoslynChartViewModel;
 
 ko.bindingHandlers["code"] = {
     init: function (element) {
         editor = ace.edit("code");
         editor.setTheme("ace/theme/monokai");
         editor.getSession().setMode("ace/mode/csharp");
+
+        viewModel.getChart();
     },
     update: function (element, valueAccessor) {
         var currentValue = valueAccessor();
         editor.setValue(currentValue);
         editor.getSession().getSelection().clearSelection();
+
+        viewModel.getChart();
     }
 };
 
 class RoslynChartViewModel {
 
     public CodeSamples: KnockoutObservableAny;
-    public Section1: KnockoutObservableAny;
-    public Section2: KnockoutObservableAny;
+    public Section: KnockoutObservableAny;
+    public SubSection: KnockoutObservableAny;
     public CodeSample: KnockoutObservableAny;
     
     public getChart: Function;
@@ -42,8 +47,8 @@ class RoslynChartViewModel {
 
         this.CodeSamples = ko.observable(codeSamples);
 
-        this.Section1 = ko.observable(codeSamples[0]);
-        this.Section2 = ko.observable(codeSamples[0].Sections[0]);
+        this.Section = ko.observable(codeSamples[0]);
+        this.SubSection = ko.observable(codeSamples[0].Sections[0]);
         this.CodeSample = ko.observable(codeSamples[0].Sections[0].CodeSamples[0]);
 
         this.getChart = () => {
@@ -72,11 +77,10 @@ class RoslynChartViewModel {
 
 // Encodes C# code from the editor
 function fixedEncodeURIComponent(str) {
-    return encodeURIComponent(str); //.replace(/[!'()]/g, escape).replace(/\*/g, "%2A");
+    return encodeURIComponent(str);
 }
 
 $(function () {
-    var viewModel = new RoslynChartViewModel();
+    viewModel = new RoslynChartViewModel();
     ko.applyBindings(viewModel);
-    viewModel.getChart();
 });
