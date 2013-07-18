@@ -23,31 +23,31 @@ ko.bindingHandlers["code"] = {
 
 class RoslynChartViewModel {
 
-    public CodeSamples: KnockoutObservableAny;
-    public Section: KnockoutObservableAny;
-    public SubSection: KnockoutObservableAny;
-    public CodeSample: KnockoutObservableAny;
+    public CodeSamples: KnockoutObservableArray<any>;
+    public Section: KnockoutObservable<any>;
+    public SubSection: KnockoutObservable<any>;
+    public CodeSample: KnockoutObservable<any>;
     
     public getChart: Function;
 
     constructor() {
 
-        var codeSamples;
+        var codeSamplesCategories;
 
         $.ajax({
             url: "Chart/GetCodeSamples",
             async: false,
             dataType: "json",
             success: function (data) {
-                codeSamples = data;
+                codeSamplesCategories = data;
             }
         });
 
-        this.CodeSamples = ko.observable(codeSamples);
+        this.CodeSamples = ko.observableArray(codeSamplesCategories);
 
-        this.Section = ko.observable(codeSamples[0]);
-        this.SubSection = ko.observable(codeSamples[0].Sections[0]);
-        this.CodeSample = ko.observable(codeSamples[0].Sections[0].CodeSamples[0]);
+        this.Section = ko.observable(codeSamplesCategories[0]);
+        this.SubSection = ko.observable(codeSamplesCategories[0].Sections[0]);
+        this.CodeSample = ko.observable(codeSamplesCategories[0].Sections[0].CodeSamples[0]);
 
         this.getChart = () => {
 
@@ -78,7 +78,7 @@ function fixedEncodeURIComponent(str) {
     return encodeURIComponent(str);
 }
 
-$(function () {
+$(() => {
     viewModel = new RoslynChartViewModel();
     ko.applyBindings(viewModel);
 });

@@ -1,5 +1,6 @@
 var editor;
 var viewModel;
+
 ko.bindingHandlers["code"] = {
     init: function (element) {
         editor = ace.edit("code");
@@ -10,31 +11,39 @@ ko.bindingHandlers["code"] = {
         var currentValue = valueAccessor();
         editor.setValue(currentValue);
         editor.getSession().getSelection().clearSelection();
+
         viewModel.getChart();
     }
 };
+
 var RoslynChartViewModel = (function () {
     function RoslynChartViewModel() {
-        var codeSamples;
+        var codeSamplesCategories;
+
         $.ajax({
             url: "Chart/GetCodeSamples",
             async: false,
             dataType: "json",
             success: function (data) {
-                codeSamples = data;
+                codeSamplesCategories = data;
             }
         });
-        this.CodeSamples = ko.observable(codeSamples);
-        this.Section = ko.observable(codeSamples[0]);
-        this.SubSection = ko.observable(codeSamples[0].Sections[0]);
-        this.CodeSample = ko.observable(codeSamples[0].Sections[0].CodeSamples[0]);
+
+        this.CodeSamples = ko.observableArray(codeSamplesCategories);
+
+        this.Section = ko.observable(codeSamplesCategories[0]);
+        this.SubSection = ko.observable(codeSamplesCategories[0].Sections[0]);
+        this.CodeSample = ko.observable(codeSamplesCategories[0].Sections[0].CodeSamples[0]);
+
         this.getChart = function () {
-            if(editor == undefined) {
+            if (editor == undefined) {
                 return;
             }
+
             $.post("Chart/Create", "code=" + fixedEncodeURIComponent(editor.getSession().getValue()), function (data) {
-                if(data.Message == "Success") {
+                if (data.Message == "Success") {
                     $("#img-chart").attr("src", "/Chart/ReturnChart?guid=" + data.Guid);
+
                     $("#messages").removeClass("alert alert-error").addClass("alert alert-success");
                     $("#messages").text('Success');
                 } else {
@@ -46,9 +55,11 @@ var RoslynChartViewModel = (function () {
     }
     return RoslynChartViewModel;
 })();
+
 function fixedEncodeURIComponent(str) {
     return encodeURIComponent(str);
 }
+
 $(function () {
     viewModel = new RoslynChartViewModel();
     ko.applyBindings(viewModel);
